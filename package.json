@@ -1,6 +1,6 @@
 {
   "name": "live-cam-clock",
-  "version": "0.0.3-3",
+  "version": "0.0.3",
   "description": "Clock on the Live Cam.",
   "main": "lib/bundle.main.js",
   "config": {
