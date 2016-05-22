@@ -1,0 +1,18 @@
+machine:
+  pre:
+    - nvm install v6.2.0
+dependencies:
+  pre:
+    - nvm use v6.2.0
+test:
+  pre:
+    - npm-run-all -p vendor build
+  override:
+    - npm run test:ci
+deployment:
+  release:
+    branch: release
+    commands:
+      - go get github.com/aktau/github-release
+      - npm run release
+      - ruby ./github-release.rb
