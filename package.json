@@ -1,6 +1,6 @@
 {
   "name": "live-cam-clock",
-  "version": "0.0.2-2",
+  "version": "0.0.2-1",
   "description": "Clock on the Live Cam.",
   "main": "lib/bundle.main.js",
   "config": {
@@ -26,8 +26,8 @@
     "pack:osx": "cross-conf-env electron-packager ./ $npm_package_config_packageName --platform=darwin --arch=x64 --version=$npm_package_config_electronVersion --ignore=\"/node_modules/\" --out=./dist --icon=./images/$npm_package_config_packageName.icns --overwrite",
     "pack": "npm-run-all -p pack:*",
     "archive:osx": "rimraf dist/osx && mkdirp dist/osx && cross-conf-env zip -r \"dist/osx/$npm_package_config_packageName-osx.zip\" \"dist/$npm_package_config_packageName-darwin-x64\"",
-    "archive": "cross-conf-env echo $npm_package_config_packageName",
-    "release": "npm-run-all -s pack archive",
+    "archive": "npm-run-all -p archive:*",
+    "release": "cross-conf-env echo $npm_package_config_packageName",
     "start": "electron ./"
   },
   "author": "Keita Okamoto<ok@aaa.email.ne.jp>",
