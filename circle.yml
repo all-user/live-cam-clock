@@ -1,10 +1,6 @@
 machine:
-  override:
-    - nvm install v6.2.0
-dependencies:
-  override:
-    - nvm use v6.2.0
-    - npm i --dev
+  node:
+    version: 6.2.0
 test:
   pre:
     - npm-run-all -p vendor build
