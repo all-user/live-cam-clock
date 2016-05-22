@@ -23,9 +23,9 @@
     "watch": "npm-run-all -p watch:* watch:*:*",
     "vendor:copy": "cpx -L \"./node_modules/@all-user/*/dist/**/*\" vendor/@all-user",
     "vendor": "npm run vendor:copy",
-    "pack:osx": "cross-conf-env electron-packager ./ $npm_package_config_packageName --platform=darwin --arch=x64 --version=$npm_package_config_electronVersion --out=./dist --icon=./images/$npm_package_config_packageName.icns --overwrite",
+    "pack:osx": "cross-conf-env electron-packager ./ $npm_package_config_packageName --platform=darwin --arch=x64 --version=$npm_package_config_electronVersion --ignore=\"/node_modules/\" --out=./dist --icon=./images/$npm_package_config_packageName.icns --overwrite",
     "pack": "npm-run-all -p pack:*",
-    "archive:osx": "mkdir -p dist/osx && cross-conf-env zip -r \"dist/osx/$npm_package_config_packageName-osx.zip\" \"dist/$npm_package_config_packageName-darwin-x64\"",
+    "archive:osx": "rimraf dist/osx && mkdirp dist/osx && cross-conf-env zip -r \"dist/osx/$npm_package_config_packageName-osx.zip\" \"dist/$npm_package_config_packageName-darwin-x64\"",
     "archive": "npm-run-all -p archive:*",
     "release": "npm-run-all -s pack archive",
     "start": "electron ./"
@@ -50,10 +50,12 @@
     "jade": "^1.11.0",
     "key-string": "^0.1.0",
     "lodash": "^4.12.0",
+    "mkdirp": "^0.5.1",
     "moment": "^2.13.0",
     "nib": "^1.1.0",
     "npm-run-all": "^2.1.0",
     "npm-run-help": "^1.1.0",
+    "rimraf": "^2.5.2",
     "stylus": "^0.54.5",
     "watchify": "^3.7.0"
   }
