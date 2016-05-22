@@ -2,6 +2,7 @@ require 'json'
 package_json = JSON.parse(File.read('./package.json'))
 version = "v#{package_json['version']}"
 user_name = package_json['config']['githubUserName']
+package_name = package_json['config']['packgeName']
 repo_name = package_json['config']['repoName']
 targets = ['osx']
 release_info = "-u #{user_name} -r #{repo_name} -t #{version}"
@@ -22,7 +23,7 @@ Dir.chdir(File.dirname(__FILE__)) do
     %x(
       github-release upload  #{release_info} \
                              -n "#{target}.zip" \
-                             -f ./dist/#{target}/POET-#{target}.zip
+                             -f ./dist/#{target}/#{package_name}-#{target}.zip
     )
   end
 end
