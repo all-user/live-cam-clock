@@ -2,7 +2,7 @@ require 'json'
 package_json = JSON.parse(File.read('./package.json'))
 version = "v#{package_json['version']}"
 user_name = package_json['config']['githubUserName']
-package_name = package_json['config']['packgeName']
+package_name = package_json['config']['packageName']
 repo_name = package_json['config']['repoName']
 targets = ['osx']
 release_info = "-u #{user_name} -r #{repo_name} -t #{version}"
