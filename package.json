@@ -26,7 +26,7 @@
     "pack:osx": "cross-conf-env electron-packager ./ $npm_package_config_packageName --platform=darwin --arch=x64 --version=$npm_package_config_electronVersion --ignore=\"/node_modules/\" --out=./dist --icon=./images/$npm_package_config_packageName.icns --overwrite",
     "pack": "npm-run-all -p pack:*",
     "archive:osx": "rimraf dist/osx && mkdirp dist/osx && cross-conf-env zip -r \"dist/osx/$npm_package_config_packageName-osx.zip\" \"dist/$npm_package_config_packageName-darwin-x64\"",
-    "archive": "npm-run-all -p archive:*",
+    "archive": "cross-conf-env echo $npm_package_config_packageName",
     "release": "npm-run-all -s pack archive",
     "start": "electron ./"
   },
