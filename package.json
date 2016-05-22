@@ -6,7 +6,8 @@
   "config": {
     "electronVersion": "1.1.0",
     "githubUserName": "all-user",
-    "packageName": "LiveCamClock"
+    "packageName": "LiveCamClock",
+    "repoName": "live-cam-clock"
   },
   "scripts": {
     "help": "npm-run-help",

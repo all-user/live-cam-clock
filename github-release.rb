@@ -2,9 +2,9 @@ require 'json'
 package_json = JSON.parse(File.read('./package.json'))
 version = "v#{package_json['version']}"
 user_name = package_json['config']['userName']
-package_name = package_json['config']['packageName']
+repo_name = package_json['config']['repoName']
 targets = ['osx']
-release_info = "-u #{user_name} -r #{package_name} -t #{version}"
+release_info = "-u #{user_name} -r #{repo_name} -t #{version}"
 
 Dir.chdir(File.dirname(__FILE__)) do
   `github-release info #{release_info}`
