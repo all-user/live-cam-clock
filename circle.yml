@@ -1,9 +1,10 @@
 machine:
-  pre:
+  override:
     - nvm install v6.2.0
 dependencies:
-  pre:
+  override:
     - nvm use v6.2.0
+    - npm i --dev
 test:
   pre:
     - npm-run-all -p vendor build
