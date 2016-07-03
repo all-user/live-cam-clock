@@ -32,5 +32,8 @@
     "sourceType": "module"
   },
   "parser": "babel-eslint",
-  "plugin": "react"
+  "plugin": [
+    "flowtype",
+    "react"
+  ]
 }

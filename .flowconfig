@@ -1,0 +1,15 @@
+[ignore]
+bundle.js
+bundle.*.js
+.*/node_modules/fbjs/*
+./lib/*
+[include]
+
+[libs]
+./src/decls
+[options]
+module.name_mapper='^.*\.css$' -> 'empty/object'
+module.ignore_non_literal_requires=true
+unsafe.enable_getters_and_setters=true
+esproposal.class_instance_fields=enable
+esproposal.class_static_fields=enable

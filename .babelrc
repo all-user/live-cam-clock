@@ -1,4 +1,24 @@
 {
-  "presets": ["react", "es2016"],
-  "plugins": ["transform-object-rest-spread"]
+  "presets": [
+    "react",
+    "es2015",
+    "es2016"
+  ],
+  "plugins": [
+    "transform-flow-strip-types",
+    "transform-object-rest-spread",
+    "transform-class-properties"
+  ],
+  "env": {
+    "development": {
+      "presets": [
+        "power-assert"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "unassert"
+      ]
+    }
+  }
 }

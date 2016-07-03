@@ -1,8 +1,9 @@
-import LiveCamClock from './presentational.jsx';
+import YoutubeIframeVideoPlayer from './YoutubeIframeVideoPlayerPresentational.jsx';
 import { connect } from 'react-redux';
+import Models from '../../Models.js';
 
 const mapStateToProps = (state, props) => {
-  return { ...state.liveCamClock };
+  return state.liveCamClock.videoPlayers[props.idx];
 };
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -14,4 +15,4 @@ const mapDispatchToProps = (dispatch, props) => {
 module.exports = connect(
   mapStateToProps,
   mapDispatchToProps
-)(LiveCamClock);
+)(YoutubeIframeVideoPlayer);

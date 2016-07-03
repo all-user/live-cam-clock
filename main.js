@@ -1,3 +1,3 @@
 'use strict';
 
-require('./lib/bundle.main.js');
+require('./lib/main.bundle.js');
