@@ -30,7 +30,6 @@
   "dependencies": {
     "@all-user/ok-blocks": "0.0.7",
     "@all-user/ok-patterns-lines": "0.1.0",
-    "@all-user/ok-patterns-olympic2020": "0.0.3",
     "key-string": "^0.1.0",
     "lodash": "^4.13.1",
     "moment": "^2.13.0",

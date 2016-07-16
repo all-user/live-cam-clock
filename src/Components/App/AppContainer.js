@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import App from './AppPresentational.jsx';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return { state: state };
 };
 

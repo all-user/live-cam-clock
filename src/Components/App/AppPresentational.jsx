@@ -5,7 +5,7 @@ import BaseClasses from '../../BaseClasses.js';
 class App extends BaseClasses.Component {
   render() {
     return (
-      <Views.LiveCamClock state={ this.props.state }/>
+      <Views.LiveCamClock state={ this.props.state.liveCamClock }/>
     );
   }
 }

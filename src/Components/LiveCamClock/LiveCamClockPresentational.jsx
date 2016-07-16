@@ -5,17 +5,18 @@ import BaseClasses from '../../BaseClasses';
 
 class LiveCamClock extends BaseClasses.Component {
   render() {
+    debugger;
     const styles = {
       root: {
-        width: `${ this.model.width }px`,
-        height: `${ this.model.height }px`
+        width: `${ this.model.state.width }px`,
+        height: `${ this.model.state.height }px`
       }
     };
 
     return (
       <div style={ styles.root }>
         <Views.Clock state={ this.model.clockState }/>
-        { this.model.state.videoPlayers.map((s, i) => <Views.YoutubeIframeVideoPlayer state={ s } key={ s.iframeId } idx={ i }/>) }
+        { this.model.state.videoPlayers.map((s, i) => <Views.YoutubeIframeVideoPlayer state={ { ...s, videoId: this.model.state.videos[this.model.state.videoIndexList[i]][0] } } key={ s.iframeId }/>) }
       </div>
     );
   }

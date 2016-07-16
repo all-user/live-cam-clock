@@ -1,5 +1,7 @@
 import Models from '../../Models';
 import BaseClasses from '../../BaseClasses';
+import { adjustSize } from '../../Actions.js';
+import { handleActions } from 'redux-actions';
 
 class App extends BaseClasses.Model {
   static get ratio() { return innerHeight / innerWidth; }
@@ -8,21 +10,25 @@ class App extends BaseClasses.Model {
 
   static get initialState() {
     return {
-      width: this.appWidth,
-      height: this.appHeight,
-      ratio: this.appRatio,
+      width: this.width,
+      height: this.height,
+      ratio: this.ratio,
       liveCamClock: Models.LiveCamClock.initialState
     };
   }
 
-  static reducer(state, action) {
-    if (state == null) {
-      return this.initialState;
-    }
-    return state;
+  static get reducer() {
+    return handleActions({
+      [adjustSize]: (state, action) => {
+        debugger;
+        return {
+          ...state,
+          ...action.payload,
+          liveCamClock: Models.LiveCamClock.reducer(state.liveCamClock, action)
+        };
+      }
+    }, this.initialState);
   }
 }
-
-App.reducer = App.reducer.bind(App);
 
 module.exports = App;

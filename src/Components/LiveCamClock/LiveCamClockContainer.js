@@ -3,13 +3,11 @@ import LiveCamClock from './LiveCamClockPresentational.jsx';
 import Models from '../../Models.js';
 
 const mapStateToProps = (state) => {
-  return { state: state.liveCamClock };
+  return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-
-  };
+  return {};
 };
 
 module.exports = connect(

@@ -14,20 +14,22 @@ class YoutubeIframeVideoPlayer extends BaseClasses.Component {
   componentDidMount() {
     this[IFRAME_REF_PROP] = document.createElement('iframe');
     this[IFRAME_REF_PROP].setAttribute('id', this.model.state.iframeId);
+    this[IFRAME_REF_PROP].setAttribute('src', this.model.videoSrc);
     this[IFRAME_REF_PROP].addEventListener('load', this.model.handleIframeLoaded);
     this[ROOT_REF_PROP].appendChild(this[IFRAME_REF_PROP]);
   }
 
   componentDidUpdate() {
-    this[IFRAME_REF_PROP].width = this.model.height / Models.YoutubeIframeVideoPlayer.ratio;
-    this[IFRAME_REF_PROP].height = this.model.height;
+    this[IFRAME_REF_PROP].width = this.model.state.height / Models.YoutubeIframeVideoPlayer.ratio;
+    this[IFRAME_REF_PROP].height = this.model.state.height;
   }
 
   render() {
+    debugger;
     const styles = {
       root: {
-        width: `${ this.model.width }px`,
-        height: `${ this.model.height }px`
+        width: `${ this.model.state.width }px`,
+        height: `${ this.model.state.height }px`
       }
     };
 

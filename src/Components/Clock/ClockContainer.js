@@ -1,14 +1,12 @@
 import { connect } from 'react-redux';
 import Clock from './ClockPresentational.jsx';
 
-const mapStateToProps = (state) => {
-  return state;
+const mapStateToProps = (state, props) => {
+  return {};
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-
-  };
+const mapDispatchToProps = (dispatch, props) => {
+  return {};
 };
 
 module.exports = connect(

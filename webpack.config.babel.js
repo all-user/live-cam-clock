@@ -59,7 +59,7 @@ export default {
       },
       {
         test: /\.css$/,
-        include: [path.resolve(__dirname, 'node_modules')],
+        exclude: [path.resolve(__dirname, 'src')],
         loader: ExtractTextPlugin.extract('raw')
       }
     ]

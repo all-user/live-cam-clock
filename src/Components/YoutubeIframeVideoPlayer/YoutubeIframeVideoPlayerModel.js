@@ -1,17 +1,20 @@
 /* global YT */
 import uuid from 'uuid';
 import DataSets from '../../DataSets.js';
-import { ADJUST_SIZE } from '../../ActionTypes.js';
+import { adjustSize } from '../../Actions.js';
+import { handleActions } from 'redux-actions';
 import BaseClasses from '../../BaseClasses';
-
-const LOADED_PROMISE_PROP = Symbol();
 
 class YoutubeIframeVideoPlayer extends BaseClasses.Model {
   constructor(state) {
     super(state);
     this.handleIframeLoaded = this.handleIframeLoaded.bind(this);
-    if (!this.loadedPromise) {
-      this.constructor.loadedPromise = this.constructor.loadIframeApi();
+    debugger;
+    this.state.handlePlayerReady = this.state.handlePlayerReady.bind(this);
+    this.state.handlePlayerStateChange = this.state.handlePlayerStateChange.bind(this);
+    this.state.handlePlayerError = this.state.handlePlayerError.bind(this);
+    if (!this.constructor.youtubeIframeAPIReady) {
+      this.constructor.youtubeIframeAPIReady = this.constructor.loadIframeApi();
     }
   }
 
@@ -20,15 +23,15 @@ class YoutubeIframeVideoPlayer extends BaseClasses.Model {
       iframeId: `yt-iframe-video-player-${ uuid.v4() }`,
       width: 0,
       height: 0,
-      videoId: DataSets.Video[0][0]
+      videoId: DataSets.Video[0][0],
+      handlePlayerReady: () => { console.log('handlePlayerReady is not implements yet.'); },
+      handlePlayerStateChange: () => { console.log('handlePlayerStateChange is not implements yet.'); },
+      handlePlayerError: () => { console.log('handlePlayerError is not implements yet.'); }
     };
   }
 
   static get ratio() { return 9 / 16; }
   static get iframeId() { return this.state.iframeId; }
-
-  static get loadedPromise() { return this[LOADED_PROMISE_PROP]; }
-  static set loadedPromise(value) { this[LOADED_PROMISE_PROP] = value; }
 
   static loadIframeApi() {
     const tag = document.createElement('script');
@@ -39,40 +42,41 @@ class YoutubeIframeVideoPlayer extends BaseClasses.Model {
     return p;
   }
 
-  get width() { return this.state.width; }
-  get height() { return this.state.height; }
   get videoId() { return this.state.videoId; }
+  get videoSrc() {
+    return `http://www.youtube.com/embed/${ this.videoId }?enablejsapi=1&autoplay=1&controls=0&showinfo=0&modestbranding=0`;
+  }
 
   handleIframeLoaded() {
-    debugger;
-    this.player = this.getNewPlayer();
+    this.constructor.youtubeIframeAPIReady.then(() => {
+      this.player = this.getNewPlayer();
+    });
   }
 
   getNewPlayer() {
     return new YT.Player(this.state.iframeId, {
       events: {
-        onReady: this.handlePlayerReady,
-        onStateChange: this.handlePlayerStateChange,
-        onError: this.handleError
+        onReady: this.state.handlePlayerReady,
+        onStateChange: this.state.handlePlayerStateChange,
+        onError: this.state.handleError
       }
     });
   }
 
   // reducers
-  static reducer(state, action) {
-    switch (action.type) {
-    case ADJUST_SIZE:
-      return this.adjustSize(state, action);
-    default:
-      return state;
-    }
+  static get reducer() {
+    return handleActions({
+      [adjustSize]: (state, action) => {
+        return this.adjustSize(state, action);
+      }
+    });
   }
 
   static adjustSize(state, action) {
     return {
       ...state,
-      width: action.width,
-      height: action.height
+      width: action.payload.width,
+      height: action.payload.height
     };
   }
 }

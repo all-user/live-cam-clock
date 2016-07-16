@@ -1,6 +1,7 @@
 import DataSets from '../../DataSets.js';
 import Models from '../../Models.js';
-import { ADJUST_SIZE } from '../../ActionTypes.js';
+import { adjustSize, waitBuffer, playNext } from '../../Actions.js';
+import { handleActions } from 'redux-actions';
 import BaseClasses from '../../BaseClasses';
 
 class LiveCamClock extends BaseClasses.Model {
@@ -13,9 +14,10 @@ class LiveCamClock extends BaseClasses.Model {
       lineColorIndex: 0,
       paddingColorIndex: 1,
       lineWeight: 3,
-      videoIndex: 0,
+      videoIndexList: [0],
       width: 0,
-      height: 0
+      height: 0,
+      bufferingDuration: 10 * 1000
     };
   }
 
@@ -38,28 +40,20 @@ class LiveCamClock extends BaseClasses.Model {
   }
 
   // reducers
-  static reducer(state, action) {
-    switch (action.type) {
-    case ADJUST_SIZE:
-      return this.adjustSize(state, action);
-    default:
-      return state;
-    }
+  static get reducer() {
+    return handleActions({
+      [adjustSize]: (state, action) => {
+        return this.adjustSize(state, action);
+      }
+    });
   }
 
   static adjustSize(state, action) {
-    const adjusted = {
-      width: action.appWidth,
-      height: action.appHeight
-    };
     return {
       ...state,
-      ...adjusted,
+      ...action.payload,
       videoPlayers: state.videoPlayers.map(s => {
-        return Models.YoutubeIframeVideoPlayer.reducer(s, {
-          type: ADJUST_SIZE,
-          ...adjusted
-        });
+        return Models.YoutubeIframeVideoPlayer.reducer(s, action);
       })
     };
   }
