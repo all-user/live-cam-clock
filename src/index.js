@@ -385,12 +385,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
   const updateClock = throttle(_updateClock, 100);
-  const handleRAF = timestamp => {
+  const handleRaf = timestamp => {
     updateClock(timestamp);
-    requestAnimationFrame(handleRAF);
+    requestAnimationFrame(handleRaf);
   };
 
-  requestAnimationFrame(handleRAF);
+  requestAnimationFrame(handleRaf);
 
   const changeWeight = (block, lighter) => {
     if (lighter) {

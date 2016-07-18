@@ -6,7 +6,9 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => {
-  return {};
+  return {
+    state: { ...props.state, dispatch }
+  };
 };
 
 module.exports = connect(

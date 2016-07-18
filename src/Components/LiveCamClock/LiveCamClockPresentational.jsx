@@ -5,7 +5,6 @@ import BaseClasses from '../../BaseClasses';
 
 class LiveCamClock extends BaseClasses.Component {
   render() {
-    debugger;
     const styles = {
       root: {
         width: `${ this.model.state.width }px`,

@@ -9,7 +9,6 @@ class YoutubeIframeVideoPlayer extends BaseClasses.Model {
   constructor(state) {
     super(state);
     this.handleIframeLoaded = this.handleIframeLoaded.bind(this);
-    debugger;
     this.state.handlePlayerReady = this.state.handlePlayerReady.bind(this);
     this.state.handlePlayerStateChange = this.state.handlePlayerStateChange.bind(this);
     this.state.handlePlayerError = this.state.handlePlayerError.bind(this);
@@ -31,7 +30,6 @@ class YoutubeIframeVideoPlayer extends BaseClasses.Model {
   }
 
   static get ratio() { return 9 / 16; }
-  static get iframeId() { return this.state.iframeId; }
 
   static loadIframeApi() {
     const tag = document.createElement('script');
@@ -75,7 +73,7 @@ class YoutubeIframeVideoPlayer extends BaseClasses.Model {
   static adjustSize(state, action) {
     return {
       ...state,
-      width: action.payload.width,
+      width: (action.payload.height - 2) / this.ratio,
       height: action.payload.height
     };
   }

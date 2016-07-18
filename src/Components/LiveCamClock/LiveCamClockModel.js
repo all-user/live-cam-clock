@@ -1,6 +1,6 @@
 import DataSets from '../../DataSets.js';
 import Models from '../../Models.js';
-import { adjustSize, waitBuffer, playNext } from '../../Actions.js';
+import { adjustSize, updateClock, waitBuffer, playNext } from '../../Actions.js';
 import { handleActions } from 'redux-actions';
 import BaseClasses from '../../BaseClasses';
 
@@ -44,16 +44,23 @@ class LiveCamClock extends BaseClasses.Model {
     return handleActions({
       [adjustSize]: (state, action) => {
         return this.adjustSize(state, action);
+      },
+      [updateClock]: (state, action) => {
+        return { ...state, clockState: Models.Clock.reducer(state.clockState, action) };
       }
     });
   }
 
   static adjustSize(state, action) {
+    const width = action.payload.windowRatio > action.payload.ratio ? action.payload.width : action.payload.height / action.payload.ratio;
+    const height = width * action.payload.ratio;
     return {
       ...state,
-      ...action.payload,
+      width,
+      height,
+      clockState: Models.Clock.reducer(state.clockState, { ...action, payload: { height, width } }),
       videoPlayers: state.videoPlayers.map(s => {
-        return Models.YoutubeIframeVideoPlayer.reducer(s, action);
+        return Models.YoutubeIframeVideoPlayer.reducer(s, { ...action, payload: { height, width } });
       })
     };
   }

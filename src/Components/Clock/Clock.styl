@@ -1,0 +1,21 @@
+@import '../../vars.styl'
+
+.wrapper
+  absolute top -100% bottom -100% left -100% right -100%
+  margin auto
+  background $block_color
+  z-index 100
+  .lines-emblem
+    position absolute
+  &:before,
+  &:after
+    content ''
+    size 100%
+    display block
+    position absolute
+    top 0
+    background-color $masking_color
+  &:before
+    left -100%
+  &:after
+    right -100%

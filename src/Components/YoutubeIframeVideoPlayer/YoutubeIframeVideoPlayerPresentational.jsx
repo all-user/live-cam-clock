@@ -2,6 +2,7 @@
 import React from 'react';
 import Models from '../../Models.js';
 import BaseClasses from '../../BaseClasses.js';
+import scopedStyles from './YoutubeIframeVideoPlayer.styl';
 
 const IFRAME_REF_PROP = Symbol();
 const ROOT_REF_PROP = Symbol();
@@ -20,12 +21,11 @@ class YoutubeIframeVideoPlayer extends BaseClasses.Component {
   }
 
   componentDidUpdate() {
-    this[IFRAME_REF_PROP].width = this.model.state.height / Models.YoutubeIframeVideoPlayer.ratio;
+    this[IFRAME_REF_PROP].width = this.model.state.width;
     this[IFRAME_REF_PROP].height = this.model.state.height;
   }
 
   render() {
-    debugger;
     const styles = {
       root: {
         width: `${ this.model.state.width }px`,
@@ -33,7 +33,7 @@ class YoutubeIframeVideoPlayer extends BaseClasses.Component {
       }
     };
 
-    return <div style={ styles.root } key={ this.props.id } ref={ el => this[ROOT_REF_PROP] = el }></div>;
+    return <div className={ scopedStyles.wrapper } style={ styles.root } key={ this.props.id } ref={ el => this[ROOT_REF_PROP] = el }></div>;
   }
 }
 
