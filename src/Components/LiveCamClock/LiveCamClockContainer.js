@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import LiveCamClock from './LiveCamClockPresentational.jsx';
 import Models from '../../Models.js';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {};
 };
 

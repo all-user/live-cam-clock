@@ -6,12 +6,9 @@ import { handleActions } from 'redux-actions';
 import BaseClasses from '../../BaseClasses';
 
 class YoutubeIframeVideoPlayer extends BaseClasses.Model {
-  constructor(state) {
-    super(state);
+  constructor(props) {
+    super(props);
     this.handleIframeLoaded = this.handleIframeLoaded.bind(this);
-    this.state.handlePlayerReady = this.state.handlePlayerReady.bind(this);
-    this.state.handlePlayerStateChange = this.state.handlePlayerStateChange.bind(this);
-    this.state.handlePlayerError = this.state.handlePlayerError.bind(this);
     if (!this.constructor.youtubeIframeAPIReady) {
       this.constructor.youtubeIframeAPIReady = this.constructor.loadIframeApi();
     }
@@ -22,7 +19,12 @@ class YoutubeIframeVideoPlayer extends BaseClasses.Model {
       iframeId: `yt-iframe-video-player-${ uuid.v4() }`,
       width: 0,
       height: 0,
-      videoId: DataSets.Video[0][0],
+      videoId: DataSets.Video[0][0]
+    };
+  }
+
+  static get defaultProps() {
+    return {
       handlePlayerReady: () => { console.log('handlePlayerReady is not implements yet.'); },
       handlePlayerStateChange: () => { console.log('handlePlayerStateChange is not implements yet.'); },
       handlePlayerError: () => { console.log('handlePlayerError is not implements yet.'); }
@@ -54,9 +56,9 @@ class YoutubeIframeVideoPlayer extends BaseClasses.Model {
   getNewPlayer() {
     return new YT.Player(this.state.iframeId, {
       events: {
-        onReady: this.state.handlePlayerReady,
-        onStateChange: this.state.handlePlayerStateChange,
-        onError: this.state.handleError
+        onReady: this.props.handlePlayerReady,
+        onStateChange: this.props.handlePlayerStateChange,
+        onError: this.props.handleError
       }
     });
   }

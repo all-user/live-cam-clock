@@ -1,6 +1,15 @@
 class Model {
-  constructor(state) {
-    this.state = state || this.constructor.initialState;
+  constructor(props) {
+    this.props = { ...this.constructor.defaultProps, ...props };
+    this.state = { ...this.constructor.initialState, ...props.state };
+  }
+
+  static get initialState() {
+    return {};
+  }
+
+  static get defaultProps() {
+    return {};
   }
 }
 

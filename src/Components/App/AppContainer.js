@@ -2,12 +2,14 @@ import { connect } from 'react-redux';
 import App from './AppPresentational.jsx';
 
 const mapStateToProps = (state, props) => {
-  return { state: state };
+  return {
+    state
+  };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
-
+    dispatch
   };
 };
 

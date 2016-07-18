@@ -8,10 +8,6 @@ const IFRAME_REF_PROP = Symbol();
 const ROOT_REF_PROP = Symbol();
 
 class YoutubeIframeVideoPlayer extends BaseClasses.Component {
-  componentWillReceiveProps(props) {
-    this.model = new Models.LiveCamClock(props.state);
-  }
-
   componentDidMount() {
     this[IFRAME_REF_PROP] = document.createElement('iframe');
     this[IFRAME_REF_PROP].setAttribute('id', this.model.state.iframeId);

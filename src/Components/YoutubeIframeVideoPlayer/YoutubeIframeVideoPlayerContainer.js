@@ -10,18 +10,11 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    state: {
-      ...props.state,
-      handlePlayerReady(ev) {
-        let video = ev.target;
-        video.mute();
-        video.setPlaybackRate(1);
-        dispatch(adjustSize({}));
-        // dispatch(waitBuffer({
-        //   model: this,
-        //   videoId: props.videoId
-        // }));
-      }
+    handlePlayerReady(ev) {
+      let video = ev.target;
+      video.mute();
+      video.setPlaybackRate(1);
+      dispatch(adjustSize());
     }
   };
 };

@@ -79,7 +79,7 @@ class Clock extends BaseClasses.Component {
   }
 
   throttledDispatchUpdateClock(timestamp) {
-    this.model.state.dispatch(updateClock(timestamp));
+    this.model.props.dispatch(updateClock(timestamp));
   }
 
   handleRaf(timestamp) {
