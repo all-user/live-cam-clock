@@ -7,7 +7,7 @@ import debounce from 'lodash/debounce';
 class App extends BaseClasses.Model {
   constructor(...args) {
     super(...args);
-    this.handleResize = debounce(this.handleResize.bind(this), 50);
+    this.handleResize = debounce(this.handleResize.bind(this), 100);
   }
 
   static get windowRatio() { return innerHeight / innerWidth; }
