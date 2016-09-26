@@ -22,7 +22,8 @@
     "pack": "rimraf dist && mkdir dist && npm-run-all -p pack:*",
     "archive:osx": "rimraf dist/osx && mkdirp dist/osx && cross-conf-env zip -r \"dist/osx/$npm_package_config_packageName-osx.zip\" \"dist/$npm_package_config_packageName-darwin-x64\"",
     "archive": "npm-run-all -p archive:*",
-    "release": "npm-run-all -s pack archive",
+    "release:build": "BABEL_ENV=production npm run build",
+    "release": "npm-run-all -s release:build pack archive",
     "start": "electron ./"
   },
   "author": "Keita Okamoto<ok@aaa.email.ne.jp>",
