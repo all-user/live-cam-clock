@@ -1,12 +1,11 @@
-import 'babel-polyfill';
-import path from 'path';
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const DEBUG = process.env.NODE_ENV !== 'production';
 const VERBOSE = process.env.NODE_ENV === 'production';
 
-export default {
+module.exports = {
   cache: DEBUG,
   debug: VERBOSE,
   stats: {
@@ -50,6 +49,7 @@ export default {
       {
         test: /\.jsx?$/,
         include: [path.resolve(__dirname, 'src')],
+        exclude: /node_modules/,
         loader: 'babel'
       },
       {
@@ -65,7 +65,7 @@ export default {
     ]
   },
   stylus: {
-    use: [require('nib')()],
+    use: [require('nib')(), require('foovar')()],
     import: ['~nib/lib/nib/index.styl']
   }
 };
