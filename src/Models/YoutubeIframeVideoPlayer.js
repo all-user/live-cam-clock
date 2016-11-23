@@ -1,11 +1,11 @@
 /* global YT */
 import uuid from 'uuid';
-import DataSets from '../../DataSets.js';
-import { adjustSize } from '../../Actions.js';
+import Assets from '../Assets.js';
+import Model from '../Model.js';
+import { adjustSize } from '../Actions.js';
 import { handleActions } from 'redux-actions';
-import BaseClasses from '../../BaseClasses';
 
-class YoutubeIframeVideoPlayer extends BaseClasses.Model {
+class YoutubeIframeVideoPlayer extends Model {
   constructor(props) {
     super(props);
     this.handleIframeLoaded = this.handleIframeLoaded.bind(this);
@@ -19,7 +19,7 @@ class YoutubeIframeVideoPlayer extends BaseClasses.Model {
       iframeId: `yt-iframe-video-player-${ uuid.v4() }`,
       width: 0,
       height: 0,
-      videoId: DataSets.Video[0][0]
+      videoId: Assets.Videos[0][0]
     };
   }
 
@@ -69,7 +69,7 @@ class YoutubeIframeVideoPlayer extends BaseClasses.Model {
       [adjustSize]: (state, action) => {
         return this.adjustSize(state, action);
       }
-    });
+    }, this.initialState);
   }
 
   static adjustSize(state, action) {

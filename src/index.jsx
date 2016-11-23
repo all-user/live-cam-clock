@@ -1,18 +1,20 @@
 import React from 'react';
+import Components from './Components';
+import Models from './Models.js';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { createStore } from 'redux';
 import '@all-user/ok-patterns-lines/dist/bundle.css';
-import Views from './Views.js';
-import Models from './Models.js';
-import styles from './index.styl';
+import Styles from './index.styl';
 
 const store = createStore(Models.App.reducer);
+const App = connect((state, props) => ({ ...props, state }))(Components.App);
 
 document.addEventListener('DOMContentLoaded', () => {
   render(
-    <Provider store={ store }>
-      <Views.App/>
+    <Provider
+      store={ store }>
+      <App/>
     </Provider>,
     document.querySelector('#app')
   );

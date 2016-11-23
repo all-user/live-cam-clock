@@ -64,6 +64,7 @@ module.exports = {
       }
     ]
   },
+  devtool: "#source-map",
   stylus: {
     use: [require('nib')(), require('foovar')()],
     import: ['~nib/lib/nib/index.styl']

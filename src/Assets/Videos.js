@@ -1,5 +1,6 @@
 module.exports = [
-  ['6q36pnzcw70', 0], // 渋谷
+  ['2_fALfyxzfM', 0], // 東京タワー
+  ['_9pavMzUY-c', 0], // 渋谷
   ['fx-6lLDAjPs', 0], // 横浜
   ['CHl1qC9ay8s', 0], // Taiwan
   ['YH3Nhp0R9t8', 0], // Amsterdam Dam
@@ -47,7 +48,6 @@ module.exports = [
   ['eu5PTvpoWeQ', 0], // Parafia św. Pawła Apostoła w Bochni [transmisja na żywo]
   ['_P8aZKew2Qk', 0], // Transmisja na żywo
   ['frJhxpSSv40', 0], // Beograd Com Live Stream
-  // ['N7X030hrg2s', 0], // フジテレビお台場ライブカメラ
   ['31vNARRU1SU', 0], // Okeanos Explorer - Camera 3
   ['c_oWfGMH5jg', 0], // Kamera z Zambrowa - Zambrow city - live cameras - Europe, Poland, Zambrów Polska - zambrow.org 2/5
   ['cCqIVbDZcGU', 0], // Degirmenburnu Residence Bodrum City Cam
@@ -63,37 +63,37 @@ module.exports = [
   ['aUKgCNuqUu0', 0], // Live: Geovision GV-MFDC1501 Cloud Camera
   // ['D4KIdVrIq0w', 0], // Africa24 Live
   // ['xmEhX5Ourzw', 164],
-    // ['ILHoyj0lRiY', 171],
-    // ['zsOb5sPcEiM', 180],
+  // ['ILHoyj0lRiY', 171],
+  // ['zsOb5sPcEiM', 180],
   // ['0qfoYXaOqDY', 391],
-    // ['YKo6VPpvCUc', 12],
+  // ['YKo6VPpvCUc', 12],
   // ['1s_lTyhBFNY', 46],
-    // ['7eyYe-MN1Nc', 1903],
-    // ['5Ehd4cFEvnQ', 218],
-    // ['VOgpV0jwhDc', 108],
-    // ['PC77lsC_q_U', 149],
+  // ['7eyYe-MN1Nc', 1903],
+  // ['5Ehd4cFEvnQ', 218],
+  // ['VOgpV0jwhDc', 108],
+  // ['PC77lsC_q_U', 149],
   // ['tyHa3U-iRaM', 131],
   // ['bNd8JkEptiM', 37],
   // ['fmujLFHRrAA', 912],
   // ['Wc_PzQvr-OQ', 65],
-    // ['FnxwlFVohR4', 353],
-    // ['OWgmXoCyaXc', 163],
-    // ['u6ogYNm4WFI', 74],
-    // ['qoLQizjh30k', 101],
+  // ['FnxwlFVohR4', 353],
+  // ['OWgmXoCyaXc', 163],
+  // ['u6ogYNm4WFI', 74],
+  // ['qoLQizjh30k', 101],
   // ['Vpv5bS9MK-w', 421],
   // ['yEowbmxLqEM', 341],
-    // ['ldRhniqAI6s', 2129],
+  // ['ldRhniqAI6s', 2129],
   // ['-pVHC1DXQ7U', 229],
-    // ['3W3s2VWvYYI', 74],
-    // ['r0U83wtmk28', 105],
-    // ['laWkmljkrGo', 101],
+  // ['3W3s2VWvYYI', 74],
+  // ['r0U83wtmk28', 105],
+  // ['laWkmljkrGo', 101],
   // ['Jr5BhBxWKT8', 323], // 上海
-    // ['7tOKSEtxjlU', 301], // ジャングル
-    // ['Kq_cptHufTQ', 156], // マサイ
-    // ['dL0lNGXoP8E', 146], // enter the void
+  // ['7tOKSEtxjlU', 301], // ジャングル
+  // ['Kq_cptHufTQ', 156], // マサイ
+  // ['dL0lNGXoP8E', 146], // enter the void
   // ['ISb8HjrcyJM', 533], // enter the void
   // ['1t4zmiNR7tQ', 226], // drone
-    // ['cnYkifGvqHI', 260], // new york city
-    // ['lK_70f7PamE', 30], // better call saul
+  // ['cnYkifGvqHI', 260], // new york city
+  // ['lK_70f7PamE', 30], // better call saul
   // ['rVoPzA0g3Ac', 277], // taking heads
 ];

@@ -1,10 +1,10 @@
 import moment from 'moment';
-import Models from '../../Models.js';
-import BaseClasses from '../../BaseClasses';
-import { adjustSize, updateClock } from '../../Actions.js';
+import Model from '../Model.js';
+import Models from '../Models.js';
+import { adjustSize, updateClock } from '../Actions.js';
 import { handleActions } from 'redux-actions';
 
-class Clock extends BaseClasses.Model {
+class Clock extends Model {
   static get initialState() {
     const mo = moment(Date.now());
     return {
@@ -44,7 +44,7 @@ class Clock extends BaseClasses.Model {
           sec: this.getSec(mo)
         };
       }
-    });
+    }, this.initialState);
   }
 
   static adjustSize(state, action) {

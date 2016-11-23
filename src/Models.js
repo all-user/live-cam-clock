@@ -1,6 +1,6 @@
-export default {
-  get App() { return require('./Components/App/AppModel'); },
-  get Clock() { return require('./Components/Clock/ClockModel'); },
-  get LiveCamClock() { return require('./Components/LiveCamClock/LiveCamClockModel'); },
-  get YoutubeIframeVideoPlayer() { return require('./Components/YoutubeIframeVideoPlayer/YoutubeIframeVideoPlayerModel'); }
+module.exports = {
+  get App() { return require('./Models/App'); },
+  get Clock() { return require('./Models/Clock'); },
+  get LiveCamClock() { return require('./Models/LiveCamClock'); },
+  get YoutubeIframeVideoPlayer() { return require('./Models/YoutubeIframeVideoPlayer'); }
 };

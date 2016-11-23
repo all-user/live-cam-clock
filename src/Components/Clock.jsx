@@ -1,13 +1,13 @@
 import React from 'react';
-import Models from '../../Models';
-import BaseClasses from '../../BaseClasses';
+import Models from '../Models';
+import Component from '../Component';
 import { OKBlock, OKBlocksGroup } from '@all-user/ok-blocks';
 require('@all-user/ok-patterns-lines')(OKBlock);
-import scopedStyles from './Clock.styl';
-import { updateClock } from '../../Actions.js';
+import Styles from './Clock.styl';
+import { updateClock } from '../Actions.js';
 import throttle from 'lodash/throttle';
 
-class Clock extends BaseClasses.Component {
+class Clock extends Component {
   constructor(...args) {
     super(...args);
     this.handleRaf = this.handleRaf.bind(this);
@@ -111,8 +111,14 @@ class Clock extends BaseClasses.Component {
       }
     };
 
-    return <div className={ scopedStyles.wrapper } style={ styles.root } ref={ el => this.root = el }></div>;
+    return (
+      <div
+        dispatch={ this.props.dispatch }
+        className={ Styles.wrapper }
+        style={ styles.root }
+        ref={ el => this.root = el }/>
+    );
   }
 }
 
-export default Clock;
+module.exports = Clock;

@@ -17,8 +17,7 @@
       "always"
     ],
     "no-console": 1,
-    "no-unused-vars": 1,
-    "comma-dangle": 1
+    "no-unused-vars": 1
   },
   "env": {
     "es6": true,

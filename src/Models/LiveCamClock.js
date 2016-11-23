@@ -1,14 +1,14 @@
-import DataSets from '../../DataSets.js';
-import Models from '../../Models.js';
-import { adjustSize, updateClock, waitBuffer, playNext } from '../../Actions.js';
+import Assets from '../Assets.js';
+import Model from '../Model.js';
+import Models from '../Models.js';
+import { adjustSize, updateClock, waitBuffer, playNext } from '../Actions.js';
 import { handleActions } from 'redux-actions';
-import BaseClasses from '../../BaseClasses';
 
-class LiveCamClock extends BaseClasses.Model {
+class LiveCamClock extends Model {
   static get initialState() {
     return {
-      colors: [...DataSets.Color],
-      videos: [...DataSets.Video],
+      colors: [...Assets.Colors],
+      videos: [...Assets.Videos],
       videoPlayers: [Models.YoutubeIframeVideoPlayer.initialState],
       clockState: Models.Clock.initialState,
       lineColorIndex: 0,
@@ -48,7 +48,7 @@ class LiveCamClock extends BaseClasses.Model {
       [updateClock]: (state, action) => {
         return { ...state, clockState: Models.Clock.reducer(state.clockState, action) };
       }
-    });
+    }, this.initialState);
   }
 
   static adjustSize(state, action) {

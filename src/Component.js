@@ -1,5 +1,5 @@
 import React from 'react';
-import Models from '../Models.js';
+import Models from './Models.js';
 
 class Component extends React.Component {
   constructor(props, ...args) {
